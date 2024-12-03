@@ -4,6 +4,7 @@
 
 layout: home
 title: "Jonathan Gottlieb"
+permalink: /
 ---
 
 # Me in 10 Seconds
