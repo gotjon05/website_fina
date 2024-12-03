@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+# About Me
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+I’m an early-career data scientist with four years of experience analyzing membership data using Power BI, managing the SQL/Web server for an E-commerce website, and bridging the gap between non-technical stakeholders and technology. I’m transitioning from seven years of working with nonprofit development using Raisers Edge CRM and overseeing IT infrastructure.

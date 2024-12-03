@@ -1,0 +1,34 @@
+#sidebar {
+  width: 200px; /* Sidebar width */
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+  position: fixed; /* Fixed position for scrolling */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Main Content Styles */
+#content {
+  margin-left: 260px; /* Matches the width of the sidebar */
+  padding: 20px;
+  flex: 1; /* Allow the content to take up remaining space */
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    position: relative;
+    width: 100%; /* Full width for smaller screens */
+    height: auto; /* Allow the height to adjust */
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #content {
+    margin-left: 0; /* Remove left margin for smaller screens */
+    padding-top: 20px;
+  }
+}
+
