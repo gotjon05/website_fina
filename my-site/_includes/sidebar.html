@@ -1,7 +1,12 @@
-<div id="sidebar">
+<div id="sidebar" style="width: 250px; background-color: #f4f4f4; border-right: 1px solid #ccc; height: 100vh; padding: 20px;">
+  <img src="{{ '/assets/images/my-face.jpg' | relative_url }}" 
+       alt="Profile image not available" 
+       style="width: 150px; border-radius: 50%; margin-bottom: 20px;">
   <h2>{{ site.author.name }}</h2>
-  <ul class="social-links">
+  <ul>
     <li><a href="https://github.com/gotjon05" target="_blank">GitHub</a></li>
     <li><a href="https://linkedin.com/in/gotjon" target="_blank">LinkedIn</a></li>
+    <li><a href="mailto:you@example.com">Email</a></li>
   </ul>
 </div>
+
