@@ -1,27 +1,76 @@
-/* Container Layout */
-#container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  height: 100vh; /* Full viewport height */
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Stack navbar on top, then content */
 }
 
-/* Sidebar Styles */
-#sidebar {
-  width: 180px; /* Sidebar width */
-  background-color: #f4f4f4; /* Grey background */
-  padding: 15px; /* Inner padding */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Ensure the sidebar does not shrink */
+/* Navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    flex: 0 0 auto; /* Navbar stays fixed height */
+    width: 100%; /* Full width of the viewport */
+}
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center align navbar items */
+}
+.navbar ul li {
+    margin: 0 20px;
+}
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* Main Content Styles */
-#main-content {
-  flex-grow: 1; /* Allow the content to take up remaining space */
-  margin-left: 200px; /* Offset content from the left (sidebar + spacing) */
-  padding: 20px; /* Inner padding for the main content */
-  background-color: white; /* Optional: Ensure background contrast */
-  box-sizing: border-box; /* Include padding/margin in the box model */
-  overflow-wrap: break-word; /* Prevent overflowing text */
+/* Layout Container */
+.container {
+    display: flex;
+    flex: 1; /* Takes up remaining height */
+    flex-direction: row; /* Sidebar and main content side-by-side */
+    width: 100%; /* Ensure it fills the viewport */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 0 10%; /* Sidebar takes 20% of width */
+    background-color: #f4f4f4;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Full height to match content */
+    overflow-y: auto; /* Allow scrolling for overflow */
+}
+
+/* Main Content */
+.main-content {
+    flex: 1; /* Fills the remaining width */
+    padding: 2rem;
+    background-color: #fff;
+    overflow-y: auto; /* Scrollable content if needed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack sidebar and main content */
+    }
+    .sidebar {
+        flex: 0 0 auto; /* Sidebar adjusts to content */
+        width: 100%; /* Full width on smaller screens */
+    }
+    .main-content {
+        width: 100%;
+    }
 }
 

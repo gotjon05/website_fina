@@ -7,6 +7,7 @@ title: "Jonathan Gottlieb"
 permalink: /
 ---
 
+# Jonathan Gottlieb
 # Me in 10 Seconds
 I'm a long distance runner, caver, and aspiring data scientist 
 
