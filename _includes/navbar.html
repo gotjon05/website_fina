@@ -1,11 +1,8 @@
 <nav class="navbar">
     <ul>
         <li><a href="/">Home</a></li>
-        {% for page in site.pages %}
-            {% if page.title and page.nav %}
-                <li><a href="{{ page.url | relative_url }}">{{ page.title }}</a></li>
-            {% endif %}
-        {% endfor %}
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/about/">About Me</a></li>
     </ul>
 </nav>
 
