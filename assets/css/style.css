@@ -22,7 +22,7 @@ body, html {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Center align navbar items */
+    justify-content: flex-start; /* Align links to the left */
 }
 .navbar ul li {
     margin: 0 20px;
@@ -33,37 +33,34 @@ body, html {
     font-weight: bold;
 }
 
-/* Layout Container */
 .container {
     display: flex;
-    flex: 1; /* Takes up remaining height */
-    flex-direction: row; /* Sidebar and main content side-by-side */
-    width: 100%; /* Ensure it fills the viewport */
-    overflow: hidden; /* Prevent overflow issues */
+    flex-direction: row; /* Sidebar and content side-by-side */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
 }
 
-/* Sidebar */
 .sidebar {
-    flex: 0 0 10%; /* Sidebar takes 20% of width */
-    background-color: #f4f4f4;
-    padding: 1rem;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    height: 100%; /* Full height to match content */
+    flex: 0 0 80px; /* Sidebar width as a fixed value */
+    background-color: #f4f4f4; /* Grey background */
+    padding: 10px; /* Compact internal padding */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    height: 100vh; /* Full viewport height */
     overflow-y: auto; /* Allow scrolling for overflow */
-    text-align: center; /* Center align all content */
+    position: fixed; /* Keep sidebar in place */
+    top: 0;
+    left: 0;
 }
 
-/* Profile Photo in Sidebar */
+/* Circular Profile Photo */
 .profile-photo {
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Ensures the aspect ratio is a square */
-    border-radius: 50%; /* Makes the image circular */
-    object-fit: cover; /* Ensures the image fits properly */
-    margin: 0 auto; /* Center the image horizontally */
-    display: block; /* Center the image in the sidebar */
-    border: 2px solid #ccc; /* Optional: Add a border */
+    width: 100%; /* Let the image scale with the sidebar */
+    max-width: 80px; /* Cap the maximum size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Circular shape */
+    margin-bottom: 15px; /* Space below the photo */
+    object-fit: cover; /* Ensure proper scaling inside the container */
 }
-
 
 
 /* Main Content */
