@@ -50,7 +50,21 @@ body, html {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     height: 100%; /* Full height to match content */
     overflow-y: auto; /* Allow scrolling for overflow */
+    text-align: center; /* Center align all content */
 }
+
+/* Profile Photo in Sidebar */
+.profile-photo {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Ensures the aspect ratio is a square */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Ensures the image fits properly */
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Center the image in the sidebar */
+    border: 2px solid #ccc; /* Optional: Add a border */
+}
+
+
 
 /* Main Content */
 .main-content {
