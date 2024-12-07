@@ -12,15 +12,14 @@ body, html {
 .navbar {
     background-color: #333; /* Dark background */
     color: white; /* Text color */
-    height: 80px; /* Increase height of the navbar */
+    height: 10vh; /* Dynamic height based on viewport */
     width: 100%; /* Full width of the viewport */
     position: fixed; /* Stick to the top of the screen */
     top: 0;
-    left: 0; /* Start from the left edge */
+    left: 0;
     display: flex;
-    align-items: center; /* Center items vertically within the navbar */
-    justify-content: flex-start; /* Align content to the left */
-    padding: 0 20px; /* Add padding for spacing */
+    align-items: center; /* Center items vertically */
+    padding: 0 2rem; /* Add padding for spacing */
     z-index: 1000; /* Ensure it stays above other elements */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
@@ -31,18 +30,14 @@ body, html {
     margin: 0;
     padding: 0;
     display: flex; /* Keep links horizontal */
-    gap: 20px; /* Add spacing between links */
-}
-
-.navbar ul li {
-    margin: 0;
+    gap: 1rem; /* Add spacing between links */
 }
 
 .navbar ul li a {
     color: white; /* Link text color */
     text-decoration: none; /* Remove underline */
     font-weight: bold; /* Bold text */
-    padding: 10px 15px; /* Add padding for clickable area */
+    padding: 0.5rem 1rem; /* Add padding for clickable area */
     border-radius: 5px; /* Optional: Rounded hover effect */
 }
 
@@ -50,26 +45,21 @@ body, html {
     background-color: #575757; /* Highlight on hover */
 }
 
-
+/* Layout Container */
 .container {
-    margin-top: 80px;
+    margin-top: 10vh; /* Match navbar height */
     display: flex;
-    flex-direction: row; /* Sidebar and content side-by-side */
-    width: 100%; /* Full width of the viewport */
-    height: calc(100vh - 80px); /* Match height below navbar */
+    width: 100%; /* Full width */
+    height: 90vh; /* Match remaining height below navbar */
 }
 
 /* Sidebar */
 .sidebar {
-    top: 80px; /* Align below navbar */
-    width: 200px; /* Increased sidebar width */
+    width: 15%; /* Dynamic width for flexibility */
     background-color: #f4f4f4; /* Grey background */
-    padding: 15px; /* Internal padding */
+    padding: 1rem; /* Internal padding */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    height: calc(100vh - 80px); /* Full height below navbar */
     overflow-y: auto; /* Allow scrolling for overflow */
-    position: fixed; /* Keep sidebar fixed on the left */
-    left: 0; /* Align sidebar to the left edge */
     display: flex; /* Flexbox for alignment */
     flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center content horizontally */
@@ -77,38 +67,53 @@ body, html {
 
 /* Circular Profile Photo */
 .profile-photo {
-    width: 120px; /* Larger image */
-    height: 120px; /* Match height to width for a perfect circle */
+    width: 8vw; /* Dynamic width based on viewport */
+    max-width: 120px; /* Cap image size for larger screens */
+    aspect-ratio: 1 / 1; /* Maintain a perfect circle */
     border-radius: 50%; /* Make the image circular */
-    margin-bottom: 20px; /* Add space below the photo */
+    margin: 2rem auto 1rem auto; /* Add space above and below */
     object-fit: cover; /* Ensure proper scaling inside the container */
+    position: relative; /* Positioning context */
+    transform: translateX(10%); /* Push the image slightly to the right */
 }
-
-
 /* Main Content */
 .main-content {
-    flex: 1; /* Fills the remaining width */
+    flex: 1; /* Fill remaining width */
     padding: 2rem;
     background-color: #fff;
     overflow-y: auto; /* Scrollable content if needed */
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Sidebar for Smaller Screens */
+    .sidebar {
+        width: 20%; /* Adjust sidebar width */
+    }
+
+    /* Profile Photo for Smaller Screens */
+    .profile-photo {
+        width: 12vw;
+        max-width: 80px; /* Smaller size */
+    }
+}
+
 @media (max-width: 480px) {
     /* Sidebar for Very Small Screens */
     .sidebar {
-        width: 80px; /* Further reduce sidebar width */
-        padding: 5px; /* Compact padding */
+        width: 25%; /* Reduce sidebar width further */
+        padding: 0.5rem; /* Compact padding */
     }
 
     /* Main Content for Very Small Screens */
-    #main-content {
-        margin-left: 90px; /* Adjust for narrower sidebar */
-        padding: 10px; /* Reduce padding */
+    .main-content {
+        padding: 1rem; /* Reduce padding */
     }
 
     /* Profile Photo for Very Small Screens */
     .profile-photo {
-        width: 60px; /* Smaller image for very small screens */
-        height: 60px; /* Match width */
+        width: 16vw;
+        max-width: 60px; /* Smaller image */
     }
 }
+
