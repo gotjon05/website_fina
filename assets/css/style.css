@@ -93,17 +93,22 @@ body, html {
     overflow-y: auto; /* Scrollable content if needed */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Stack sidebar and main content */
-    }
+@media (max-width: 480px) {
+    /* Sidebar for Very Small Screens */
     .sidebar {
-        flex: 0 0 auto; /* Sidebar adjusts to content */
-        width: 100%; /* Full width on smaller screens */
+        width: 80px; /* Further reduce sidebar width */
+        padding: 5px; /* Compact padding */
     }
-    .main-content {
-        width: 100%;
+
+    /* Main Content for Very Small Screens */
+    #main-content {
+        margin-left: 90px; /* Adjust for narrower sidebar */
+        padding: 10px; /* Reduce padding */
+    }
+
+    /* Profile Photo for Very Small Screens */
+    .profile-photo {
+        width: 60px; /* Smaller image for very small screens */
+        height: 60px; /* Match width */
     }
 }
-
