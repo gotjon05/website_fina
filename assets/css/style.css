@@ -10,55 +10,77 @@ body, html {
 
 /* Navbar */
 .navbar {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    flex: 0 0 auto; /* Navbar stays fixed height */
+    background-color: #333; /* Dark background */
+    color: white; /* Text color */
+    height: 80px; /* Increase height of the navbar */
     width: 100%; /* Full width of the viewport */
-}
-.navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    position: fixed; /* Stick to the top of the screen */
+    top: 0;
+    left: 0; /* Start from the left edge */
     display: flex;
-    justify-content: flex-start; /* Align links to the left */
-}
-.navbar ul li {
-    margin: 0 20px;
-}
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+    align-items: center; /* Center items vertically within the navbar */
+    justify-content: flex-start; /* Align content to the left */
+    padding: 0 20px; /* Add padding for spacing */
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 
+/* Navbar Links */
+.navbar ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Keep links horizontal */
+    gap: 20px; /* Add spacing between links */
+}
+
+.navbar ul li {
+    margin: 0;
+}
+
+.navbar ul li a {
+    color: white; /* Link text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    padding: 10px 15px; /* Add padding for clickable area */
+    border-radius: 5px; /* Optional: Rounded hover effect */
+}
+
+.navbar ul li a:hover {
+    background-color: #575757; /* Highlight on hover */
+}
+
+
 .container {
+    margin-top: 80px;
     display: flex;
     flex-direction: row; /* Sidebar and content side-by-side */
     width: 100%; /* Full width of the viewport */
-    height: 100%; /* Full height of the viewport */
+    height: calc(100vh - 80px); /* Match height below navbar */
 }
 
+/* Sidebar */
 .sidebar {
-    flex: 0 0 80px; /* Sidebar width as a fixed value */
+    top: 80px; /* Align below navbar */
+    width: 200px; /* Increased sidebar width */
     background-color: #f4f4f4; /* Grey background */
-    padding: 10px; /* Compact internal padding */
+    padding: 15px; /* Internal padding */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    height: 100vh; /* Full viewport height */
+    height: calc(100vh - 80px); /* Full height below navbar */
     overflow-y: auto; /* Allow scrolling for overflow */
-    position: fixed; /* Keep sidebar in place */
-    top: 0;
-    left: 0;
+    position: fixed; /* Keep sidebar fixed on the left */
+    left: 0; /* Align sidebar to the left edge */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
 /* Circular Profile Photo */
 .profile-photo {
-    width: 100%; /* Let the image scale with the sidebar */
-    max-width: 80px; /* Cap the maximum size */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 50%; /* Circular shape */
-    margin-bottom: 15px; /* Space below the photo */
+    width: 120px; /* Larger image */
+    height: 120px; /* Match height to width for a perfect circle */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 20px; /* Add space below the photo */
     object-fit: cover; /* Ensure proper scaling inside the container */
 }
 
