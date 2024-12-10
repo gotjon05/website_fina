@@ -1,0 +1,37 @@
+{
+  "sql": [
+    {
+      "title": "SQL Joins",
+      "platform": "HackerRank",
+      "difficulty": "Medium",
+      "tags": ["SQL", "Databases"],
+      "link": "path/to/sql-joins.md"
+    },
+    {
+      "title": "Aggregate Functions",
+      "platform": "LeetCode",
+      "difficulty": "Hard",
+      "tags": ["SQL", "Aggregation"],
+      "link": "path/to/aggregate-functions.md"
+    }
+  ],
+
+
+  "r": [
+    {
+      "title": "Data Manipulation with dplyr",
+      "platform": "DataCamp",
+      "difficulty": "Easy",
+      "tags": ["R", "dplyr", "Data Manipulation"],
+      "link": "path/to/data-manipulation.md"
+    },
+    {
+      "title": "Data Visualization with ggplot2",
+      "platform": "Coursera",
+      "difficulty": "Medium",
+      "tags": ["R", "ggplot2", "Visualization"],
+      "link": "path/to/ggplot2-visualization.md"
+    }
+  ]
+}
+
