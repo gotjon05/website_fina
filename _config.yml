@@ -26,3 +26,10 @@ collections:
   projects:
     output: true
 
+# Default layout for all files in the `_projects` folder
+defaults:
+  - scope:
+      path: "_projects" # Applies to all files in the `_projects` folder
+    values:
+      layout: default
+
