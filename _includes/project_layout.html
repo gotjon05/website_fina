@@ -5,37 +5,39 @@
 
 <div class="grid-container" id="sql-grid">
   <section class="grid">
-    <!-- Example for SQL -->
-    <article class="challenge-card">
-      <h2>SQL Joins</h2>
-      <p><strong>Platform:</strong> HackerRank</p>
-      <p><strong>Difficulty:</strong> Medium</p>
-      <p><strong>Tags:</strong> SQL, Databases</p>
-    </article>
-    <article class="challenge-card">
-      <h2>Aggregate Functions</h2>
-      <p><strong>Platform:</strong> LeetCode</p>
-      <p><strong>Difficulty:</strong> Hard</p>
-      <p><strong>Tags:</strong> SQL, Aggregation</p>
-    </article>
+    {% for project in site.projects %}
+      {% if project.category == "SQL" %}
+        <button class="challenge-card" onclick="location.href='{{ project.link }}'">
+          <h2>{{ project.title }}</h2>
+          <p><strong>Platform:</strong> {{ project.platform }}</p>
+          <p><strong>Difficulty:</strong> {{ project.difficulty }}</p>
+          <p><strong>Tags:</strong>
+            {% for tag in project.tags %}
+              <span>{{ tag }}</span>{% if forloop.last == false %}, {% endif %}
+            {% endfor %}
+          </p>
+        </button>
+      {% endif %}
+    {% endfor %}
   </section>
 </div>
 
 <div class="grid-container hidden" id="r-grid">
   <section class="grid">
-    <!-- Example for R -->
-    <article class="challenge-card">
-      <h2>Data Manipulation with dplyr</h2>
-      <p><strong>Platform:</strong> DataCamp</p>
-      <p><strong>Difficulty:</strong> Easy</p>
-      <p><strong>Tags:</strong> R, dplyr, Data Manipulation</p>
-    </article>
-    <article class="challenge-card">
-      <h2>Data Visualization with ggplot2</h2>
-      <p><strong>Platform:</strong> Coursera</p>
-      <p><strong>Difficulty:</strong> Medium</p>
-      <p><strong>Tags:</strong> R, ggplot2, Visualization</p>
-    </article>
+    {% for project in site.projects %}
+      {% if project.category == "R" %}
+        <button class="challenge-card" onclick="location.href='{{ project.link }}'">
+          <h2>{{ project.title }}</h2>
+          <p><strong>Platform:</strong> {{ project.platform }}</p>
+          <p><strong>Difficulty:</strong> {{ project.difficulty }}</p>
+          <p><strong>Tags:</strong>
+            {% for tag in project.tags %}
+              <span>{{ tag }}</span>{% if forloop.last == false %}, {% endif %}
+            {% endfor %}
+          </p>
+        </button>
+      {% endif %}
+    {% endfor %}
   </section>
 </div>
 
