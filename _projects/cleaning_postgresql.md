@@ -7,7 +7,6 @@ tags:
   - dplyr
   - Data Manipulation
 category: R
-link: /projects/cleaning_postgresql
 ---
 
 

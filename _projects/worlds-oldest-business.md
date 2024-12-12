@@ -1,5 +1,5 @@
 ---
-title: Uncovering world’s oldest business
+title: Uncovering World’s Oldest Business
 platform: DataCamp
 difficulty: Easy
 tags:
@@ -7,5 +7,5 @@ tags:
   - dplyr
   - Data Manipulation
 category: SQL
-link: /projects/Worlds_oldest_business
 ---
+
