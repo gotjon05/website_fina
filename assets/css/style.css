@@ -1,3 +1,35 @@
+/* Remove outer container styling */
+.highlight {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Style the inner code box */
+.highlight code {
+  background-color: #f9f9f9; /* Light background for the code box */
+  color: #24292e; /* Default text color */
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 5px; /* Rounded corners */
+  display: inline-block; /* Size box to fit code content */
+  overflow-x: auto;
+}
+
+/* SQL-specific syntax highlighting */
+.highlight .k { color: #d73a49; font-weight: bold; } /* Keywords (e.g., SELECT, WHERE) */
+.highlight .n { color: #6f42c1; } /* Names (e.g., column/table names) */
+.highlight .o { color: #d73a49; } /* Operators (e.g., =, >) */
+.highlight .s1 { color: #032f62; } /* Strings (e.g., 'Yes') */
+.highlight .mi { color: #005cc5; } /* Numbers (e.g., 10) */
+
+
+
+
 /* General Reset */
 body, html {
     margin: 0;
