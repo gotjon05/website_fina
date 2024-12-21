@@ -11,7 +11,7 @@ category: SQL
 
 ## Factors that Fuel Student Performance ##
 
-`1.`
+`1.` 
 Do more study hours and extracurricular activities lead to better scores? Analyze how studying more than 10 hours per week, while also participating in extracurricular activities, impacts exam performance.  
    The output should include two columns:`hours_studied`, `avg_exam_score`. Group and sort the results by `hours_studied` in descending order.
 
