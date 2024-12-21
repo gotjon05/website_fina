@@ -11,7 +11,7 @@ permalink: /
 I'm a long distance runner, caver, and aspiring data scientist 
 
 
-Welcome to my website. Here, you can explore my blog posts, projects, and more!
+Welcome to my website. A space to progress capture my projects and share my work
 
 - [About Me](/about/)
 - [Projects](/projects/)
