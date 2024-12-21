@@ -3,8 +3,8 @@ title: Uncovering World’s Oldest Business
 platform: DataCamp
 difficulty: Medium
 tags:
-  - 
-  - 
+  - Joining Tables
+  - CTE
   - 
 category: SQL
 ---
