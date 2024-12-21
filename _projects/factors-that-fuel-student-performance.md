@@ -4,7 +4,7 @@ platform: DataCamp
 difficulty: Medium
 tags:
   - Case Statements
-  - 
+  - Window Functions 
   - 
 category: SQL
 ---
@@ -40,31 +40,86 @@ Is there a sweet spot for study hours? Explore how different ranges of study hou
 - To create ranges of hours studied, i need to create case statements	
 - Aggregate of avg studied score by hours studied range
 
-
+Attempt 1: I did not realize you cannot use an alias when grouping by case statements, you need to explicitly group by the case statement 
 ```sql
 SELECT
 	CASE WHEN hours_studied >= 1 AND hours_studied <= 5 THEN '1-5 hours'
 	WHEN hours_studied >= 6 AND hours_studied <= 10 THEN '6-10 hours'
 	WHEN hours_studied >= 11 AND hours_studied <= 15 THEN '11-15 hours'
-	ELSE "16+ hours"
+	ELSE '16+ hours'
 	END AS hours_studied_range,
-		AVG(hours_studied) AS avg_exam_score
+		AVG(exam_score) AS avg_exam_score
 FROM
 	student_performance
 GROUP BY
 	hours_studied_range
+ORDER BY
+	avg_exam_score DESC
 
 ```
-			
+Attempt 2:
+```sql
+SELECT
+	CASE 
+		WHEN hours_studied >= 1 AND hours_studied <= 5 THEN '1-5 hours'
+		WHEN hours_studied >= 6 AND hours_studied <= 10 THEN '6-10 hours'
+		WHEN hours_studied >= 11 AND hours_studied <= 15 THEN '11-15 hours'
+		ELSE '16+ hours'
+	END AS hours_studied_range,
+		AVG(exam_score) AS avg_exam_score
+FROM
+	student_performance
+GROUP BY
+	CASE
+		WHEN hours_studied >= 1 AND hours_studied <= 5 THEN '1-5 hours'
+		WHEN hours_studied >= 6 AND hours_studied <= 10 THEN '6-10 hours'
+		WHEN hours_studied >= 11 AND hours_studied <= 15 THEN '11-15 hours'
+		ELSE '16+ hours'
+	END
+ORDER BY
+	avg_exam_score DESC
+
+```
+	
 `3.`
 A teacher wants to show their students their relative rank in the class, without revealing their exam scores to each other. Use a window function to assign ranks based on exam_score, ensuring that students with the same exam score share the same rank and no ranks are skipped. Return the columns attendance, hours_studied, sleep_hours, tutoring_sessions, and exam_rank. The students with the highest exam score should be at the top of the results, so order your query by exam_rank in ascending order. Limit your query to 30 students.
 
+**Requirements**
+- I need to use window function to create a rank based on exam score -- duplicate ranks okay
+- 
 
+Attempt 1: I incorrectly used Rank() instead of DENSE_RANK() which allows consecutive ranking
+```sql
+SELECT
+    attendance, 
+    hours_studied, 
+    sleep_hours, 
+    tutoring_sessions, 
+    RANK() OVER (ORDER BY exam_score DESC) AS exam_rank
+FROM
+    student_performance
+ORDER BY
+    exam_rank ASC
+LIMIT 
+    30;
+```
 
+Solution:
 
-
-
-
+```sql
+SELECT
+    attendance, 
+    hours_studied, 
+    sleep_hours, 
+    tutoring_sessions, 
+    DENSE_RANK() OVER (ORDER BY exam_score DESC) AS exam_rank
+FROM
+    student_performance
+ORDER BY
+    exam_rank ASC
+LIMIT 
+    30;
+```
 
 
 
