@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <!-- Preload Sidebar Background Image -->
+    <link rel="preload" href="{{ '/assets/images/image.png' | relative_url }}" as="image">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body class="{% if page.url contains '/projects/' %}project-page{% endif %}">
     <!-- Navbar Container (Fixed at the top) -->
@@ -26,7 +31,7 @@
     </div>
 
     <!-- Reference JavaScript File -->
-    <script src="/assets/js/script.js"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>
 
