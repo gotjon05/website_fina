@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
-    
+
     <!-- Preload Sidebar Background Image -->
-    <link rel="preload" href="{{ '/assets/images/image.png' | relative_url }}" as="image">
+    <link rel="preload" href="{{ '/assets/images/forest2.webp' | relative_url }}" as="image">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
@@ -20,7 +20,7 @@
     <!-- Layout Container for Sidebar and Main Content -->
     <div class="layout-container">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar loading">
             {% include sidebar.html %}
         </div>
 
@@ -30,8 +30,12 @@
         </div>
     </div>
 
-    <!-- Reference JavaScript File -->
+    <!-- Reference JavaScript Files -->
+    <!-- Existing JavaScript -->
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+
+    <!-- New Sidebar Background Preloading Script -->
+    <script src="{{ '/assets/js/sidebar-background.js' | relative_url }}"></script>
 </body>
 </html>
 
