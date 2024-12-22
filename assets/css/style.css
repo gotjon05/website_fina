@@ -18,7 +18,7 @@ body, html {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    background-color: #fff; /* Ensure uniform white background */
+    background-color: #fff;
 }
 
 /* Navbar Container */
@@ -49,7 +49,8 @@ body, html {
     padding: 0;
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .navbar ul li a {
@@ -67,34 +68,26 @@ body, html {
 /* Layout Container for Sidebar and Main Content */
 .layout-container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 0;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 1300px;
-}
-
-/* Main Content and Sidebar Container */
-.container {
-    display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
+    height: 100vh; /* Ensure it spans the viewport height */
     max-width: 1300px;
-    height: auto;
+    margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 15%;
+    flex: 0 0 15%; /* Fixed width at 15% */
+    max-width: 250px; /* Maximum sidebar width */
+    min-width: 150px; /* Minimum sidebar width */
+    height: 100vh; /* Full height */
     background-color: #fff;
     padding: 2rem;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    height: auto;
+    overflow-y: auto; /* Scroll for long content */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,20 +103,40 @@ body, html {
     object-fit: cover;
 }
 
+/* Sidebar Links */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 0.5rem;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #f4f4f4;
+}
+
 /* Main Content */
 .main-content {
-    width: 85%;
+    flex: 1; /* Takes up remaining space */
     padding: 2rem;
     background-color: #fff;
     color: #333;
     font-family: Arial, sans-serif;
     line-height: 1.6;
     word-wrap: break-word;
-    height: auto;
-    overflow: auto;
+    overflow-y: auto;
     display: block;
-    justify-content: flex-start;
-    align-items: flex-start;
     text-align: left;
 }
 
@@ -137,67 +150,65 @@ body, html {
     display: block;
 }
 
-/* Prevent Layout Shifts: Ensure Consistent Page Structure */
-.layout-container, .container, .sidebar, .main-content {
-    box-sizing: border-box;
-}
-
-/* Layout adjustments for consistent spacing */
-.layout-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 0;
-}
-
-/* Main Content and Sidebar Container */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1300px;
-    height: auto;
-    padding: 0;
-}
-
-/* Resume Page Specific Styles */
-.resume-page iframe {
-    width: 100%;
-    height: 80vh;             /* Ensure iframe fits within 80% of the page height */
-    border: none;
-    display: block;
-    margin: 0 auto;           /* Center the iframe horizontally */
-}
-
-/* Responsive Design for Small Screens */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
     .layout-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack sidebar and content vertically */
     }
 
     .sidebar {
-        width: 100%;
+        display: none; /* Hide sidebar by default */
+        position: absolute;
+        width: 200px;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background-color: #fff;
+        z-index: 1000;
+        padding: 1rem;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.active {
+        display: flex; /* Show sidebar when toggled */
     }
 
     .main-content {
-        width: 100%;
-        padding: 1rem;
-        margin-left: 0;
+        width: 100%; /* Ensure content spans full width */
     }
 
-    .markdown-content {
-        padding: 0 1rem;
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 /* Mobile Screens */
 @media (max-width: 480px) {
-    .sidebar {
-        width: 100%;
+    .resume-page iframe {
+        height: 70vh; /* Reduce iframe height for small screens */
+        width: 100%; /* Use full width */
+        margin: 10px auto; /* Smaller margin for tight spaces */
     }
+}
 
-    .main-content {
-        padding: 1rem;
+/* Toggle Button for Sidebar */
+.menu-toggle {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show toggle button on smaller screens */
     }
 }
