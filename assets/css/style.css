@@ -1,235 +1,203 @@
-/* Flexbox layout to handle content without centering it */
-.project-page .main-content {
-    display: flex;               /* Enable Flexbox */
-    flex-direction: column;      /* Stack content vertically */
-    align-items: flex-start;     /* Align items to the left */
-    max-width: 100ch;             /* Limit the content to 80 characters per line */
-    margin-left: auto;           /* Align to left */
-    margin-right: auto;          /* Ensure no horizontal overflow */
-    padding: 10px;               /* Padding around the content */
-    color: #333;                 /* Text color */
-    font-family: Arial, sans-serif;
-    line-height: 1.6;            /* Line height for readability */
-    word-wrap: break-word;       /* Break long words */
-}
-
-
-
-/* Remove outer container styling */
-.highlight {
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-}
-
-/* Style the inner code box */
-.highlight code {
-  background-color: #f9f9f9; /* Light background for the code box */
-  color: #24292e; /* Default text color */
-  padding: 0.5em;
-  border: 1px solid #ddd;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  border-radius: 5px; /* Rounded corners */
-  display: inline-block; /* Size box to fit code content */
-  overflow-x: auto;
-}
-
-/* SQL-specific syntax highlighting */
-.highlight .k { color: #d73a49; font-weight: bold; } /* Keywords (e.g., SELECT, WHERE) */
-.highlight .n { color: #6f42c1; } /* Names (e.g., column/table names) */
-.highlight .o { color: #d73a49; } /* Operators (e.g., =, >) */
-.highlight .s1 { color: #032f62; } /* Strings (e.g., 'Yes') */
-.highlight .mi { color: #005cc5; } /* Numbers (e.g., 10) */
-
-
-
-
-/* General Reset */
-body, html {
+/* Global Reset */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column; /* Stack navbar on top, then content */
+    box-sizing: border-box;
 }
 
+/* Body and HTML */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background-color: #fff; /* Ensure uniform white background */
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
 /* Navbar */
 .navbar {
-    background-color: #333; /* Dark background */
-    color: white; /* Text color */
-    height: 10vh; /* Dynamic height based on viewport */
-    width: 100%; /* Full width of the viewport */
-    position: fixed; /* Stick to the top of the screen */
-    top: 0;
-    left: 0;
+    background-color: #333;
+    color: white;
+    height: 10vh;
+    width: 100%;
+    max-width: 1300px;
     display: flex;
-    align-items: center; /* Center items vertically */
-    padding: 0 2rem; /* Add padding for spacing */
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1000;
 }
 
 /* Navbar Links */
 .navbar ul {
-    list-style: none; /* Remove bullet points */
+    list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Keep links horizontal */
-    gap: 1rem; /* Add spacing between links */
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .navbar ul li a {
-    color: white; /* Link text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
-    padding: 0.5rem 1rem; /* Add padding for clickable area */
-    border-radius: 5px; /* Optional: Rounded hover effect */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .navbar ul li a:hover {
-    background-color: #575757; /* Highlight on hover */
+    background-color: #575757;
 }
 
-/* Layout Container */
-.container {
-    margin-top: 10vh; /* Match navbar height */
+/* Layout Container for Sidebar and Main Content */
+.layout-container {
     display: flex;
-    width: 100%; /* Full width */
-    height: 90vh; /* Match remaining height below navbar */
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1300px;
+}
+
+/* Main Content and Sidebar Container */
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Sidebar */
 .sidebar {
-    width: 15%; /* Dynamic width for flexibility */
-    background-color: #f4f4f4; /* Grey background */
-    padding: 1rem; /* Internal padding */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    overflow-y: auto; /* Allow scrolling for overflow */
-    display: flex; /* Flexbox for alignment */
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center content horizontally */
+    width: 15%;
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Circular Profile Photo */
+/* Profile Image */
 .profile-photo {
-    width: 8vw; /* Dynamic width based on viewport */
-    max-width: 120px; /* Cap image size for larger screens */
-    aspect-ratio: 1 / 1; /* Maintain a perfect circle */
-    border-radius: 50%; /* Make the image circular */
-    margin: 2rem auto 1rem auto; /* Add space above and below */
-    object-fit: cover; /* Ensure proper scaling inside the container */
-    position: relative; /* Positioning context */
-    transform: translateX(10%); /* Push the image slightly to the right */
+    width: 80%;
+    max-width: 150px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
 }
+
 /* Main Content */
 .main-content {
-    flex: 1; /* Fill remaining width */
-    padding: 2rem; /* Internal padding for content */
+    width: 85%;
+    padding: 2rem;
     background-color: #fff;
-    overflow-y: auto; /* Scrollable content if needed */
-    margin-left: 7%; /* Add space between sidebar and main content */
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    word-wrap: break-word;
+    height: auto;
+    overflow: auto;
+    display: block;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
 }
 
-/* Responsive Design */
+/* Markdown Content */
+.markdown-content {
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    line-height: 1.6;
+    display: block;
+}
+
+/* Prevent Layout Shifts: Ensure Consistent Page Structure */
+.layout-container, .container, .sidebar, .main-content {
+    box-sizing: border-box;
+}
+
+/* Layout adjustments for consistent spacing */
+.layout-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0;
+}
+
+/* Main Content and Sidebar Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    padding: 0;
+}
+
+/* Resume Page Specific Styles */
+.resume-page iframe {
+    width: 100%;
+    height: 80vh;             /* Ensure iframe fits within 80% of the page height */
+    border: none;
+    display: block;
+    margin: 0 auto;           /* Center the iframe horizontally */
+}
+
+/* Responsive Design for Small Screens */
 @media (max-width: 768px) {
-    /* Sidebar for Smaller Screens */
+    .layout-container {
+        flex-direction: column;
+    }
+
     .sidebar {
-        width: 20%; /* Adjust sidebar width */
+        width: 100%;
     }
 
-    /* Profile Photo for Smaller Screens */
-    .profile-photo {
-        width: 12vw;
-        max-width: 80px; /* Smaller size */
-    }
-}
-
-@media (max-width: 480px) {
-    /* Sidebar for Very Small Screens */
-    .sidebar {
-        width: 25%; /* Reduce sidebar width further */
-        padding: 0.5rem; /* Compact padding */
-    }
-
-    /* Main Content for Very Small Screens */
     .main-content {
-        padding: 1rem; /* Reduce padding */
+        width: 100%;
+        padding: 1rem;
+        margin-left: 0;
     }
 
-    /* Profile Photo for Very Small Screens */
-    .profile-photo {
-        width: 16vw;
-        max-width: 60px; /* Smaller image */
+    .markdown-content {
+        padding: 0 1rem;
     }
 }
 
-/* Tabs */
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
+/* Mobile Screens */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
 
-.tab-button {
-  background-color: #f1f1f1;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 0 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+    .main-content {
+        padding: 1rem;
+    }
 }
-
-.tab-button.active {
-  background-color: #333;
-  color: white;
-}
-
-.tab-button:hover {
-  background-color: #ddd;
-}
-
-/* Grid Containers */
-.grid-container {
-  display: block;
-}
-
-.grid-container.hidden {
-  display: none;
-}
-
-/* Grid and Cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
-  gap: 20px;
-  padding: 20px;
-}
-
-.challenge-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  background: #f9f9f9;
-  text-align: left;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.challenge-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns for medium screens */
-  }
-}
-/* 

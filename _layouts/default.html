@@ -7,19 +7,24 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="{% if page.url contains '/projects/' %}project-page{% endif %}">
-    <!-- Include Navbar -->
-    {% include navbar.html %}
+    <!-- Navbar Container (Fixed at the top) -->
+    <div class="navbar-container">
+        {% include navbar.html %}
+    </div>
 
-    <div class="container">
-        <!-- Include Sidebar -->
-        {% include sidebar.html %}
+    <!-- Layout Container for Sidebar and Main Content -->
+    <div class="layout-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            {% include sidebar.html %}
+        </div>
 
         <!-- Main Content -->
         <div class="main-content">
             {{ content }}
         </div>
     </div>
-    
+
     <!-- Reference JavaScript File -->
     <script src="/assets/js/script.js"></script>
 </body>
