@@ -11,7 +11,8 @@ category: SQL
 
 ## Uncovering World’s Oldest Business ##
 `1.` 
-What is the oldest business on each continent? Save your query as a DataFrame oldest_business_continent with four columns: continent, country, business, and year_founded in any order.
+What is the oldest business on each continent? Save your query as a DataFrame oldest_business_continent with 
+four columns: continent, country, business, and year_founded in any order.
 
 ## Requirements ##
 - Aggregate of the oldest business by continent
@@ -22,7 +23,8 @@ Objective: I need to create aggregate view of continent, country, business based
 1. Need to JOIN businesses and countries table to get all the required columns
 2. I need to Group by continent to see each min(year_founded) per continent 
 
-Attempt 1: I forgot that all non-aggregate columns need to be included in group by clause. Since i only want to group by continent, i will need to find the oldest continent in a subquery to keep the original column requirements in the main query. 
+Attempt 1: I forgot that all non-aggregate columns need to be included in group by clause. Since i only want to group
+ by continent, i will need to find the oldest continent in a subquery to keep the original column requirements in the main query. 
 
 ```sql
 SELECT

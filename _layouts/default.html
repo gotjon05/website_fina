@@ -6,7 +6,7 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
+<body class="{% if page.url contains '/projects/' %}project-page{% endif %}">
     <!-- Include Navbar -->
     {% include navbar.html %}
 
@@ -19,7 +19,8 @@
             {{ content }}
         </div>
     </div>
- <!-- Reference JavaScript File -->
+    
+    <!-- Reference JavaScript File -->
     <script src="/assets/js/script.js"></script>
 </body>
 </html>

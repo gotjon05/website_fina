@@ -1,3 +1,20 @@
+/* Flexbox layout to handle content without centering it */
+.project-page .main-content {
+    display: flex;               /* Enable Flexbox */
+    flex-direction: column;      /* Stack content vertically */
+    align-items: flex-start;     /* Align items to the left */
+    max-width: 100ch;             /* Limit the content to 80 characters per line */
+    margin-left: auto;           /* Align to left */
+    margin-right: auto;          /* Ensure no horizontal overflow */
+    padding: 10px;               /* Padding around the content */
+    color: #333;                 /* Text color */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;            /* Line height for readability */
+    word-wrap: break-word;       /* Break long words */
+}
+
+
+
 /* Remove outer container styling */
 .highlight {
   background: none;
@@ -39,6 +56,7 @@ body, html {
     display: flex;
     flex-direction: column; /* Stack navbar on top, then content */
 }
+
 
 /* Navbar */
 .navbar {
