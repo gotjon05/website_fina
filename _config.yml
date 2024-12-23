@@ -19,6 +19,9 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+# Disable Jekyll's built-in syntax highlighter
+highlighter: none
+
 # Exclude from processing
 exclude:
   - README.md
