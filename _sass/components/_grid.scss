@@ -1,0 +1,50 @@
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 100%;
+    max-width: 1300px;
+}
+
+/* Challenge Card */
+.challenge-card {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.challenge-card h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+.challenge-card span {
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border-color: #333;
+}
+
