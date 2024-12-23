@@ -1,0 +1,29 @@
+/* Base Markdown Styles */
+.markdown-content {
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    line-height: 1.6;
+    display: block;
+}
+
+/* Code Block Styles */
+.markdown-content pre {
+    max-width: 90%; /* Adjust width of code blocks */
+    margin: 1rem auto; /* Center the code block and add vertical spacing */
+    overflow-x: auto; /* Enable horizontal scrolling if necessary */
+    background-color: #f4f4f4; /* Light background for contrast */
+    padding: 1rem; /* Internal padding for readability */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
+}
+
+/* Inline Code */
+.markdown-content code {
+    background-color: #f0f0f0; /* Subtle background for inline code */
+    padding: 0.2rem 0.4rem; /* Add small padding */
+    border-radius: 4px; /* Optional: rounded corners */
+    font-family: 'Courier New', Courier, monospace; /* Use monospace font */
+}
+

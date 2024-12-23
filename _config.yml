@@ -14,13 +14,10 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
-# Syntax highlighting settings
-highlighter: rouge
+# Markdown settings
 markdown: kramdown
 kramdown:
   input: GFM
-rouge:
-  theme: monokai # Use the GitHub syntax highlighting theme
 
 # Exclude from processing
 exclude:
