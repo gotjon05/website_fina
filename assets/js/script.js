@@ -26,7 +26,25 @@ function showGrid(gridId) {
 
 // Set the default tab on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const defaultGrid = document.getElementById('sql-grid') ? 'sql' : 'r';
-  showGrid(defaultGrid);
+  const sqlGrid = document.getElementById('sql-grid');
+  const rGrid = document.getElementById('r-grid');
+
+  // Determine default grid based on availability
+  const defaultGrid = sqlGrid && sqlGrid.querySelector('button.challenge-card')
+    ? 'sql'
+    : (rGrid && rGrid.querySelector('button.challenge-card') ? 'r' : null);
+
+  if (defaultGrid) {
+    showGrid(defaultGrid);
+  } else {
+    console.warn('No projects available to display.');
+    // Optionally, you could add a message dynamically if neither grid has projects
+    const container = document.querySelector('.tabs');
+    if (container) {
+      const noProjectsMessage = document.createElement('p');
+      noProjectsMessage.textContent = 'No projects are available at this time. Please check back later.';
+      container.insertAdjacentElement('afterend', noProjectsMessage);
+    }
+  }
 });
 

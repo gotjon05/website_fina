@@ -18,6 +18,7 @@ plugins:
 markdown: kramdown
 kramdown:
   input: GFM
+  parse_block_html: false # Disable block HTML parsing
 
 # Disable Jekyll's built-in syntax highlighter
 highlighter: none

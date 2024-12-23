@@ -5,8 +5,9 @@
 
 <div class="grid-container" id="sql-grid">
   <section class="grid">
-    {% for project in site.projects %}
-      {% if project.category == "SQL" %}
+    {% assign sql_projects = site.projects | where: "category", "SQL" %}
+    {% if sql_projects.size > 0 %}
+      {% for project in sql_projects %}
         <button class="challenge-card" onclick="location.href='{{ project.url }}'">
           <h2>{{ project.title }}</h2>
           <p><strong>Platform:</strong> {{ project.platform }}</p>
@@ -17,15 +18,18 @@
             {% endfor %}
           </p>
         </button>
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+      <p>No SQL projects available at this time. Please check back later.</p>
+    {% endif %}
   </section>
 </div>
 
 <div class="grid-container hidden" id="r-grid">
   <section class="grid">
-    {% for project in site.projects %}
-      {% if project.category == "R" %}
+    {% assign r_projects = site.projects | where: "category", "R" %}
+    {% if r_projects.size > 0 %}
+      {% for project in r_projects %}
         <button class="challenge-card" onclick="location.href='{{ project.url }}'">
           <h2>{{ project.title }}</h2>
           <p><strong>Platform:</strong> {{ project.platform }}</p>
@@ -36,8 +40,10 @@
             {% endfor %}
           </p>
         </button>
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+      <p>No R projects available at this time. Please check back later.</p>
+    {% endif %}
   </section>
 </div>
 
