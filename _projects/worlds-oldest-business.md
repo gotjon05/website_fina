@@ -73,3 +73,47 @@ JOIN
     oldest_cont AS oldest
     ON oldest.continent = b.continent AND oldest.min_year = b.year_founded
 ```
+
+## Alternative solution using Subquery instead of CTE ## 
+
+With three required non-aggregate column: (c.country,b.business), i need to find the aggregate seperately in a subquery
+
+Step 1: I need to get data from countries and buisnesses table 
+Step 2: I derive the MIN year founded per continent in JOIN subquery. And use Join match year_founded and continent with main query
+
+
+```sql
+SELECT
+    c.continent,
+    c.country,
+    b.business,
+    b.year_founded
+FROM  
+    businesses AS b
+JOIN
+    countries AS c
+    ON c.country_code = b.country_code
+JOIN (
+    SELECT
+        c1.continent,
+        MIN(b1.year_founded) AS min_year_founded
+
+    FROM  
+        businesses AS b1
+    JOIN
+        countries AS c1
+        ON c1.country_code = b1.country_code
+    GROUP BY
+        c1.continent
+
+) AS tmp ON b.year_founded = tmp.min_year_founded
+         AND c.continent = tmp.continent
+```
+
+
+`2.` 
+How many countries per continent lack data on the oldest businesses? Does including new_businesses change this? Count the number of countries per continent missing business data, including new_businesses; store the results in a DataFrame count_missing with columns continent and countries_without_businesses.
+
+## Requirements ##
+- Per Continent, count countries missing 
+
