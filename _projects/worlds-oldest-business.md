@@ -115,5 +115,41 @@ JOIN (
 How many countries per continent lack data on the oldest businesses? Does including new_businesses change this? Count the number of countries per continent missing business data, including new_businesses; store the results in a DataFrame count_missing with columns continent and countries_without_businesses.
 
 ## Requirements ##
-- Per Continent, count countries missing 
+- Per Continent, count countries missing business data
+- Required columns: continent and countries_without_business
+- Group by continent since im finding the aggregate count 
 
+Attempt 1: I got not results when i tried this with businesses and new_businesses
+
+```sql
+SELECT
+    continent, COUNT(*) AS countries_without_business
+FROM  
+    businesses AS b
+JOIN
+    countries AS c
+    ON c.country_code = b.country_code
+HAVING
+    MIN(business) IS NULL
+GROUP BY
+    continent
+```
+
+Attempt 2:
+I made the mistake of using INNER JOIN instead of OUTER JOIN. Since im counting missing buisness data, i want to include all buisness data, even if it doesnt have a match with the countries table. When i use inner join, it gave me no missing buisness data since it matched only what existed between buisness and countries table.
+
+Using MIN() is NULL in my filter has some very funky rules that dont give me the result i need.   
+
+```sql
+SELECT
+    continent, COUNT(*) AS countries_without_business
+FROM  
+    businesses AS b
+JOIN
+    countries AS c
+    ON c.country_code = b.country_code
+HAVING
+    MIN(business) IS NULL
+GROUP BY
+    continent
+```
