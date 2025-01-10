@@ -1,7 +1,7 @@
 /* Grid */
 .grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin: 0 auto;
     padding: 1rem;
@@ -48,3 +48,35 @@
     border-color: #333;
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+    .challenge-card h2 {
+        font-size: 1rem;
+    }
+
+    .challenge-card p {
+        font-size: 0.85rem;
+    }
+
+    .challenge-card span {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .challenge-card {
+        padding: 0.8rem;
+    }
+
+    .challenge-card h2 {
+        font-size: 0.9rem;
+    }
+
+    .challenge-card p {
+        font-size: 0.8rem;
+    }
+
+    .challenge-card span {
+        font-size: 0.7rem;
+    }
+}
