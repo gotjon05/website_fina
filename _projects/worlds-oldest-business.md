@@ -43,4 +43,18 @@ JOIN
 ```
 
 ### 2. How many countries per continent lack data on the oldest businesses? Does including new_businesses change this? Count the number of countries per continent missing business data, including new_businesses; store the results in a DataFrame count_missing with columns continent and countries_without_businesses.
+Requirements
+1. count oldest_buisness per continent from the countries table
+2. lack new_buisness data from the buisness or new_buisness table. 
 
+
+
+Some countries may only have data in the businesses table. Others may only have data in the new_businesses table.
+
+Steps i need to take:
+1. Identify 
+
+```
+
+
+```

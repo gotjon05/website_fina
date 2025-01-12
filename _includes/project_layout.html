@@ -1,6 +1,7 @@
 <div class="tabs">
   <button class="tab-button active" onclick="showGrid('sql')">SQL</button>
   <button class="tab-button" onclick="showGrid('r')">R</button>
+  <button class="tab-button" onclick="showGrid('data-journalism')">Data Journalism</button>
 </div>
 
 <div class="grid-container" id="sql-grid">
@@ -47,3 +48,24 @@
   </section>
 </div>
 
+<div class="grid-container hidden" id="data-journalism-grid">
+  <section class="grid">
+    {% assign data_journalism_projects = site.projects | where: "category", "Data Journalism" %}
+    {% if data_journalism_projects.size > 0 %}
+      {% for project in data_journalism_projects %}
+        <button class="challenge-card" onclick="location.href='{{ project.url }}'">
+          <h2>{{ project.title }}</h2>
+          <p><strong>Platform:</strong> {{ project.platform }}</p>
+          <p><strong>Difficulty:</strong> {{ project.difficulty }}</p>
+          <p><strong>Tags:</strong>
+            {% for tag in project.tags %}
+              <span>{{ tag }}</span>{% if forloop.last == false %}, {% endif %}
+            {% endfor %}
+          </p>
+        </button>
+      {% endfor %}
+    {% else %}
+      <p>No Data Journalism projects available at this time. Please check back later.</p>
+    {% endif %}
+  </section>
+</div>

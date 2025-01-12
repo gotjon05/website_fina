@@ -28,17 +28,22 @@ function showGrid(gridId) {
 document.addEventListener('DOMContentLoaded', () => {
   const sqlGrid = document.getElementById('sql-grid');
   const rGrid = document.getElementById('r-grid');
+  const dataJournalismGrid = document.getElementById('data-journalism-grid');
 
   // Determine default grid based on availability
   const defaultGrid = sqlGrid && sqlGrid.querySelector('button.challenge-card')
     ? 'sql'
-    : (rGrid && rGrid.querySelector('button.challenge-card') ? 'r' : null);
+    : (rGrid && rGrid.querySelector('button.challenge-card')
+      ? 'r'
+      : (dataJournalismGrid && dataJournalismGrid.querySelector('button.challenge-card')
+        ? 'data-journalism'
+        : null));
 
   if (defaultGrid) {
     showGrid(defaultGrid);
   } else {
     console.warn('No projects available to display.');
-    // Optionally, you could add a message dynamically if neither grid has projects
+    // Optionally, you could add a message dynamically if no grids have projects
     const container = document.querySelector('.tabs');
     if (container) {
       const noProjectsMessage = document.createElement('p');
@@ -47,4 +52,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
-
