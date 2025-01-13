@@ -32,3 +32,31 @@
     transform: scale(1.05);
 }
 
+/* Responsive Tabs */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column; /* Stack tabs vertically */
+        gap: 1rem; /* Reduce spacing between tabs */
+        align-items: stretch; /* Stretch tabs to full container width */
+        margin: 2rem 0; /* Adjust margin for smaller screens */
+    }
+
+    .tab-button {
+        font-size: 1rem; /* Reduce font size */
+        padding: 10px 20px; /* Adjust padding */
+        width: 100%; /* Make tabs span the full width */
+        text-align: center; /* Center-align text */
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs {
+        margin: 1rem 0; /* Further reduce margin */
+        gap: 0.5rem; /* Minimize spacing between tabs */
+    }
+
+    .tab-button {
+        font-size: 0.9rem; /* Further reduce font size for very small screens */
+        padding: 8px 15px; /* Compact padding */
+    }
+}
