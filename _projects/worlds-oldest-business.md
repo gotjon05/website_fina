@@ -42,19 +42,46 @@ JOIN
     b.year_founded = year_min.min_year;
 ```
 
-### 2. How many countries per continent lack data on the oldest businesses? Does including new_businesses change this? Count the number of countries per continent missing business data, including new_businesses; store the results in a DataFrame count_missing with columns continent and countries_without_businesses.
-Requirements
-1. count oldest_buisness per continent from the countries table
-2. lack new_buisness data from the buisness or new_buisness table. 
+### 2. How many countries per continent lack data on the oldest businesses? Does including new_businesses change this? Count the number of countries per continent missing business data, including new_businesses; store the results in a DataFrame count_missing with columns continent and countries_without_businesses
 
+The problem was confusing because i wasnt sure if the author wanted me to find countries per continent that lacked a relationship with buisness table or lacked oldest buisness. I will attempt both solutions.
 
+Countries per Continent that lack a relationship with the buisness table:
+-I will need to left merge to identify what exists in the country table and not in the buisness table 
+-Group by continent to count by continent and use an aggregate function with a nonaggregate 
+-count by country_code because each country has a country_code with a cooresponding country_code from the buisness table 
 
-Some countries may only have data in the businesses table. Others may only have data in the new_businesses table.
-
-Steps i need to take:
-1. Identify 
-
+```sql
+SELECT
+    continent, COUNT(c.country_code) AS countries_without_businesses
+FROM
+    countries AS c
+LEFT JOIN
+    businesses AS b ON c.country_code = b.country_code
+WHERE 
+    year_founded IS NULL
+GROUP BY
+    continent
 ```
+
+### 3. Which business categories are best suited to last many years, and on what continent are they? Store your answer in a DataFrame oldest_by_continent_category with the oldest founding year for each continent and category combination. It should contain three columns: continent, category, and year_founded, in that order.
+
+I need to find the oldest founding year for each continent and category combination -- this sounds straightforward by grouping with continent and category and finding the min year
+
+```sql
+SELECT
+    continent, 
+    category, 
+    min(year_founded) AS year_founded
+FROM
+    businesses AS b
+JOIN
+    countries AS c ON c.country_code = b.country_code
+JOIN
+    categories as ca ON b.category_code = ca.category_code
+GROUP BY
+    continent,
+    category
 
 
 ```
