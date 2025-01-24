@@ -17,36 +17,36 @@ Requirements
 -Of the three best-performing industries - number of unicorns within these industries (2), the year that they became a unicorn (3), and their average valuation, converted to billions of dollars and rounded to two decimal places
 -sort your results by year and number of unicorns, both in descending order.
 
+### `dates`
+| Column         | Description                                |
+|----------------|--------------------------------------------|
+| `company_id`   | A unique ID for the company.              |
+| `date_joined`  | The date that the company became a unicorn.|
+| `year_founded` | The year that the company was founded.     |
 
-## dates
-| Column       | Description                                  |
-|------------- |--------------------------------------------- |
-| `company_id`   | A unique ID for the company.                 |
-| `date_joined` | The date that the company became a unicorn.  |
-| `year_founded` | The year that the company was founded.       |
-
-## funding
+### `funding`
 | Column           | Description                                  |
-|----------------- |--------------------------------------------- |
-| `company_id`       | A unique ID for the company.                 |
-| `valuation`        | Company value in US dollars.                 |
-| `funding`          | The amount of funding raised in US dollars.  |
-| `select_investors` | A list of key investors in the company.      |
+|------------------|----------------------------------------------|
+| `company_id`     | A unique ID for the company.                |
+| `valuation`      | Company value in US dollars.                |
+| `funding`        | The amount of funding raised in US dollars. |
+| `select_investors`| A list of key investors in the company.     |
 
-## industries
-| Column       | Description                                  |
-|------------- |--------------------------------------------- |
-| `company_id`   | A unique ID for the company.                 |
+### `industries`
+| Column         | Description                                  |
+|----------------|----------------------------------------------|
+| `company_id`   | A unique ID for the company.                |
 | `industry`     | The industry that the company operates in.   |
 
-## companies
-| Column       | Description                                       |
-|------------- |-------------------------------------------------- |
+### `companies`
+| Column         | Description                                       |
+|----------------|---------------------------------------------------|
 | `company_id`   | A unique ID for the company.                      |
 | `company`      | The name of the company.                          |
 | `city`         | The city where the company is headquartered.      |
 | `country`      | The country where the company is headquartered.   |
 | `continent`    | The continent where the company is headquartered. |
+
 
 Steps:
 -Going to create a best_performing cte that identifies the three best performing industries and use it as a filter for main query
