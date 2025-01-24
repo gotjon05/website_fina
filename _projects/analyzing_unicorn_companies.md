@@ -17,6 +17,37 @@ Requirements
 -Of the three best-performing industries - number of unicorns within these industries (2), the year that they became a unicorn (3), and their average valuation, converted to billions of dollars and rounded to two decimal places
 -sort your results by year and number of unicorns, both in descending order.
 
+
+## dates
+| Column       | Description                                  |
+|------------- |--------------------------------------------- |
+| `company_id`   | A unique ID for the company.                 |
+| `date_joined` | The date that the company became a unicorn.  |
+| `year_founded` | The year that the company was founded.       |
+
+## funding
+| Column           | Description                                  |
+|----------------- |--------------------------------------------- |
+| `company_id`       | A unique ID for the company.                 |
+| `valuation`        | Company value in US dollars.                 |
+| `funding`          | The amount of funding raised in US dollars.  |
+| `select_investors` | A list of key investors in the company.      |
+
+## industries
+| Column       | Description                                  |
+|------------- |--------------------------------------------- |
+| `company_id`   | A unique ID for the company.                 |
+| `industry`     | The industry that the company operates in.   |
+
+## companies
+| Column       | Description                                       |
+|------------- |-------------------------------------------------- |
+| `company_id`   | A unique ID for the company.                      |
+| `company`      | The name of the company.                          |
+| `city`         | The city where the company is headquartered.      |
+| `country`      | The country where the company is headquartered.   |
+| `continent`    | The continent where the company is headquartered. |
+
 Steps:
 -Going to create a best_performing cte that identifies the three best performing industries and use it as a filter for main query
 -in the main query, i will have the fields: industry, year, num_unicorns, and average_valuation_billions and sort accordingly 
@@ -33,7 +64,7 @@ WITH best_performing AS (
     JOIN
         dates AS d ON d.company_id = i.company_id 
     WHERE
-        EXTRACT(YEAR FROM d.year_founded) IN (2019, 2020, 2021)
+        EXTRACT(YEAR FROM d.date_joined) IN (2019, 2020, 2021)
     GROUP BY
          industry
     ORDER BY 
@@ -47,7 +78,7 @@ count_and_avg AS (
     SELECT
         bf.industry, 
         COUNT(f.company_id) AS num_unicorns,
-        AVG(f.funding) AS average_valuation_billions
+        AVG(f.valuation) AS average_valuation_billions
     FROM
         best_performing AS bf
     JOIN
@@ -60,7 +91,7 @@ count_and_avg AS (
 
 SELECT
     count_and_avg.industry, 
-    d.year_founded AS year, 
+    d.date_joined AS year, 
     count_and_avg.num_unicorns, 
     count_and_avg.average_valuation_billions
 FROM 
@@ -73,10 +104,12 @@ ORDER BY
 
 ```
 
-ATTEMPT 2: My approach was correct. But 
+ATTEMPT 2:
+In count_and_avg i incorrectly joined the funding table with the best_performing table. funding does not have an industry column
 
-
+I had a bunch of JOIN errors because i thought that if i joined a table with an CTE, i would have access to all the columns from both tables if I joined that CTE in another CTE. When a CTE (or subquery) involves aggregation, the rows are summarized, and only the columns explicitly selected and grouped are available in the CTE output.
 ```sql
+-- industry filter for main query -- will JOIN industry field 
 WITH best_performing AS (
     SELECT 
         industry, COUNT(i.company_id) AS count_unicorns
@@ -85,7 +118,7 @@ WITH best_performing AS (
     JOIN
         dates AS d ON d.company_id = i.company_id 
     WHERE
-        EXTRACT(YEAR FROM d.year_founded) IN (2019, 2020, 2021)
+        EXTRACT(YEAR FROM d.date_joined) IN (2019, 2020, 2021)
     GROUP BY
          industry
     ORDER BY 
@@ -93,23 +126,27 @@ WITH best_performing AS (
     LIMIT
         3
 ),
-
+-- need to fix Join between best_performing and funding 
+-- i didnt correctly calculate the average valuation, converted to billions of dollars and rounded to two decimal places
 count_and_avg AS (
     SELECT
         bf.industry, 
         COUNT(f.company_id) AS num_unicorns,
-        AVG(f.funding) AS average_valuation_billions
+        ROUND(AVG(f.valuation)/ 1e9,2) AS average_valuation_billions
     FROM
         best_performing AS bf
+    JOIN 
+         industries as i ON i.industry = bf.industry
     JOIN
-        funding AS f ON f.industry = bf.industry 
+        funding AS f ON f.company_id = i.company_id 
     GROUP BY 
         bf.industry
 ),
 
+
 SELECT
     count_and_avg.industry, 
-    d.year_founded AS year, 
+    d.date_joined AS year, 
     count_and_avg.num_unicorns, 
     count_and_avg.average_valuation_billions
 FROM 
