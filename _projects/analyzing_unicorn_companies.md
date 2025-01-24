@@ -105,9 +105,12 @@ ORDER BY
 ```
 
 ATTEMPT 2:
-In count_and_avg i incorrectly joined the funding table with the best_performing table. funding does not have an industry column
 
 I had a bunch of JOIN errors because i thought that if i joined a table with an CTE, i would have access to all the columns from both tables if I joined that CTE in another CTE. When a CTE (or subquery) involves aggregation, the rows are summarized, and only the columns explicitly selected and grouped are available in the CTE output.
+
+I expected best_performing to Filter the dataset to include only the top industries (based on unicorn count in 2019–2021).
+Act as a global filter for main query so that only rows belonging to these industries and the year range (2019–2021) would make it into the final query.
+best_performing CTE only limits the industries, not the individual rows in the subsequent tables. The joins only limit the data to the industries in best_performing. They don’t restrict by year unless explicitly filtered.
 ```sql
 -- industry filter for main query -- will JOIN industry field 
 WITH best_performing AS (
@@ -127,32 +130,28 @@ WITH best_performing AS (
         3
 ),
 -- need to fix Join between best_performing and funding 
--- i didnt correctly calculate the average valuation, converted to billions of dollars and rounded to two decimal places
-count_and_avg AS (
-    SELECT
-        bf.industry, 
-        COUNT(f.company_id) AS num_unicorns,
-        ROUND(AVG(f.valuation)/ 1e9,2) AS average_valuation_billions
-    FROM
-        best_performing AS bf
-    JOIN 
-         industries as i ON i.industry = bf.industry
-    JOIN
-        funding AS f ON f.company_id = i.company_id 
-    GROUP BY 
-        bf.industry
-),
-
-
+-- i didnt correctly calculate the average valuation, converted to billions of dollars and rounded to two decimal places'
+-- I didnt include it in count_and_avg because its a non-aggregate and i dont want to group by it. 
+-- I also realized that im asked to group by industry and year, so i might as well include it here as a non-aggregate. This simplifys so much!
+-- SQL processes group by before select, so i cant reference alias in select for group by
 SELECT
-    count_and_avg.industry, 
-    d.date_joined AS year, 
-    count_and_avg.num_unicorns, 
-    count_and_avg.average_valuation_billions
-FROM 
-    count_and_avg
+    bf.industry AS industry, 
+    EXTRACT(YEAR FROM d.date_joined) AS year,
+    COUNT(f.company_id) AS num_unicorns,
+    ROUND(AVG(f.valuation)/ 1e9,2) AS average_valuation_billions
+FROM
+    best_performing AS bf
+JOIN 
+    industries as i ON i.industry = bf.industry
 JOIN
-    dates AS d ON d.company_id = count_and_avg.company_id
+    funding AS f ON f.company_id = i.company_id 
+JOIN
+    dates AS d ON d.company_id = f.company_id
+WHERE 
+    EXTRACT(YEAR FROM d.date_joined) IN (2019, 2020, 2021)
+GROUP BY 
+    bf.industry, 
+    EXTRACT(YEAR FROM d.date_joined)
 ORDER BY
     year DESC, 
     num_unicorns DESC;
