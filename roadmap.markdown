@@ -5,6 +5,7 @@ permalink: /roadmap/
 ---
 
 ## Roadmap for Grad School
+Building a strong foundation in python and mathematics before i consider applying for grad programs in data science. And using this Roadmap to methodically prepare.
 
 ### Phase 1: Foundations (Current Focus)
 - [Khan Academy - College Algebra](https://www.khanacademy.org/math/college-algebra)
