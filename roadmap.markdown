@@ -16,9 +16,13 @@ Using this Roadmap to methodically build the foundations to succeed in a data sc
 - [Khan Academy - Calculus 2](https://www.khanacademy.org/math/calculus-2)
 - [Khan Academy - Multivariable Calculus](https://www.khanacademy.org/math/multivariable-calculus)
 
+---
+
 ### Python Track 
 - [Solving Datacamp Projects](https://app.datacamp.com/learn/projects?technologies=2)
 - 
+
+---
 
 ### Data Journalism Track 
 - [Hacks, Leaks and Revelations](https://nostarch.com/hacks-leaks-and-revelations)
