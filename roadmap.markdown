@@ -5,7 +5,7 @@ permalink: /roadmap/
 ---
 
 ## Roadmap for Grad School
-Using this Roadmap to methodically prepare for gradschool in data science 
+Using this Roadmap to methodically build the foundations to succeed in a data science gradschool program
 
 ### Math Track
 - [Khan Academy - College Algebra](https://www.khanacademy.org/math/college-algebra)
@@ -19,3 +19,6 @@ Using this Roadmap to methodically prepare for gradschool in data science
 ### Python Track 
 - [Solving Datacamp Projects](https://app.datacamp.com/learn/projects?technologies=2)
 - 
+
+### Data Journalism Track 
+- [Hacks, Leaks and Revelations](https://nostarch.com/hacks-leaks-and-revelations)
