@@ -1,17 +1,25 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
 title: "Jonathan Gottlieb"
 permalink: /
 ---
 
-# Me in 10 Seconds
-I'm a long distance runner, caver, and aspiring data scientist 
+Hey! I'm Jonathan. Welcome to my blog. A space to progress capture my projects, and share my work.
 
 
-Welcome to my website. A space to progress capture my projects and share my work
+## Most recent 10 posts
 
-- [About Me](/about/)
-- [Projects](/projects/)
+<table>
+  {% for post in site.posts limit:10 %}
+    <tr>
+      <td style="white-space: nowrap; padding-right: 1em;">
+        {{ post.date | date: "%b %-d %Y" }}
+      </td>
+      <td>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+
+<p>and <a href="/categories">all posts by category</a>: (or see <a href="/popular-posts" style="color: #c25;">popular posts</a>)</p>
